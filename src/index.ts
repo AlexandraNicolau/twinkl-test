@@ -14,6 +14,10 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
 });
 
+app.post('/signup', (req: Request, res: Response) => {
+  res.send('Hello World!');
+})
+
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`[server]: Server is running at http://localhost:${port}`);
