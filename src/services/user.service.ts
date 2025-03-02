@@ -1,17 +1,7 @@
 import { BaseUser, User, UserType } from '../user/user';
 import { v4 as uuidv4 } from 'uuid';
 
-let users: Record<string, User> = {
-  '1': {
-    firstName: 'John',
-    lastName: 'Williams',
-    password: 'randomPass123',
-    emailAddress: 'hello@testy.mcTest',
-    createdAt: '2025-03-01T20:46:43.085Z',
-    userType: UserType.student,
-    id: '1',
-  },
-};
+let users: Record<string, User> = {};
 
 // we will do try catch when we call this function
 export const findUserById = async (id: string) => {
