@@ -11,7 +11,7 @@ export const findUserById = async (id: string) => {
     if (user === undefined) {
         throw new Error('User not found')
     }
-    return user  
+    return user;
 }
 
 export const addUser = async (user: BaseUser) => {
@@ -21,6 +21,7 @@ export const addUser = async (user: BaseUser) => {
         id,
         ...user
     }
+
     
     users[id] = newUser;
     return newUser
