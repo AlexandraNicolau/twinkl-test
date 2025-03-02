@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from 'express';
-import { findUserById } from '../services/user.service';
-import { User } from '../user/user';
+import { addUser, findUserById } from '../services/user.service';
+import { BaseUser, User } from '../user/user';
 
 export const getUserById = async (req: Request, res: Response) => {
   try {
@@ -14,6 +14,14 @@ export const getUserById = async (req: Request, res: Response) => {
   }
 };
 
-export const createUser = (req: Request, res: Response) => {
-  res.send('Hello World!');
+export const createUser = async (req: Request, res: Response) => {
+  try {
+    const user: BaseUser = req.body;
+
+    const newUser = await addUser(user);
+
+    res.status(201).json(newUser);
+  } catch (e) {
+    res.status(500).json({ error: (e as Error).message });
+  }
 };
