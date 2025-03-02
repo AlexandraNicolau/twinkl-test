@@ -12,7 +12,7 @@ describe('findUserById', () => {
     const mockUser = {
       firstName: 'John',
       lastName: 'Williams',
-      passowrd: 'randomPass123',
+      password: 'randomPass123',
       emailAddress: 'hello@testy.mcTest',
       createdAt: '2025-03-01T20:46:43.085Z',
       userType: UserType.student,
@@ -28,7 +28,7 @@ describe('addUser', () => {
   const mockBaseUser: BaseUser = {
     firstName: 'John',
     lastName: 'Williams',
-    passowrd: 'randomPass123',
+    password: 'randomPass123',
     emailAddress: 'hello@testy.mcTest',
     createdAt: '2025-03-01T20:46:43.085Z',
     userType: UserType.student,

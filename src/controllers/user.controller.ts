@@ -1,0 +1,27 @@
+import express, { Express, Request, Response } from 'express';
+import { addUser, findUserById } from '../services/user.service';
+import { BaseUser, User } from '../user/user';
+
+export const getUserById = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const user: User = await findUserById(id);
+
+    res.status(200).json(user);
+  } catch (e) {
+    res.status(404).json({ error: (e as Error).message });
+  }
+};
+
+export const createUser = async (req: Request, res: Response) => {
+  try {
+    const user: BaseUser = req.body;
+
+    const newUser = await addUser(user);
+
+    res.status(201).json(newUser);
+  } catch (e) {
+    res.status(500).json({ error: (e as Error).message });
+  }
+};

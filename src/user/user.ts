@@ -1,7 +1,7 @@
 export type BaseUser = {
   firstName: string;
   lastName: string;
-  passowrd: string;
+  password: string;
   emailAddress: string;
   createdAt: string;
   userType: UserType;
