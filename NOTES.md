@@ -8,6 +8,7 @@
 Structure
 
 - The app was built with the purpose of scaling from a relatively simple app, to using a fully fleshed database and the addition of more services / endpoints in the future with minimal changes
+- The findUserById purposely returns all the user details apart from the password, due to security concerns as we don't want this exposed
 
 - See diagram below for a brief explanantion
   ![architecture diagram](<Screenshot 2025-03-02 at 20.24.40.png>)
@@ -30,4 +31,5 @@ Structure
 
 4. Security
 
+- An important thing to add regarding the user password is that there currently isn't any password hashing - the password is hidden. One of the next steps would be to use a library such as `bycrypt` to hash and encrypt passwords.
 - Currently the app has no authentication, anyone could use the client application to perform operations. This can be done by using auth0.
