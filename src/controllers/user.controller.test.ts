@@ -36,7 +36,8 @@ describe('getUserById', () => {
   it('should return a 200 status code with the user', async () => {
     const newUser = await userService.addUser(mockUser);
 
-    const { id } = newUser;
+    const { password, ...newUserWithoutPassword } = newUser;
+    const { id } = newUserWithoutPassword;
 
     const request = httpMocks.createRequest({
       method: 'GET',
@@ -52,7 +53,7 @@ describe('getUserById', () => {
 
     const data = JSON.parse(response._getData());
 
-    expect(data).toStrictEqual(newUser);
+    expect(data).toStrictEqual(newUserWithoutPassword);
     expect(response.statusCode).toBe(200);
   });
 });
