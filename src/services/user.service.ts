@@ -1,4 +1,4 @@
-import { BaseUser, User, UserType } from '../user/user';
+import { BaseUser, User } from '../types/user';
 import { v4 as uuidv4 } from 'uuid';
 
 let users: Record<string, User> = {};

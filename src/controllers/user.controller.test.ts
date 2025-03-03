@@ -1,4 +1,4 @@
-import { UserType } from '../user/user';
+import { UserType } from '../types/user';
 import * as userService from '../services/user.service';
 import { createUser, getUserById } from './user.controller';
 import httpMocks from 'node-mocks-http';
@@ -75,6 +75,26 @@ describe('createUser', () => {
     const data = JSON.parse(response._getData());
 
     expect(data).toStrictEqual({ error: 'Something went wrong' });
+    expect(response.statusCode).toBe(500);
+  });
+
+  it('should return a 500 status code with an error message if adding the user fails', async () => {
+    jest
+      .spyOn(userService, 'addUser')
+      .mockRejectedValueOnce('Something went wrong');
+    const request = httpMocks.createRequest({
+      method: 'POST',
+      url: '/user/signup',
+      body: mockUser,
+    });
+
+    const response = httpMocks.createResponse();
+
+    await createUser(request, response);
+
+    const data = JSON.parse(response._getData());
+
+    expect(data).toStrictEqual({ error: 'An unknown error has occurred' });
     expect(response.statusCode).toBe(500);
   });
 
