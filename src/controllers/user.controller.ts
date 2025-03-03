@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import { Request, Response } from 'express';
 import { addUser, findUserById } from '../services/user.service';
-import { BaseUser, User } from '../user/user';
+import { BaseUser, User } from '../types/user';
 import { userValidationSchema } from './user.validation';
 
 export const getUserById = async (req: Request, res: Response) => {
@@ -30,6 +30,8 @@ export const createUser = async (req: Request, res: Response) => {
       res.status(400).json({ error: e.errors });
     } else if (e instanceof Error) {
       res.status(500).json({ error: (e as Error).message });
+    } else {
+      res.status(500).json({ error: 'An unknown error has occurred' });
     }
   }
 };

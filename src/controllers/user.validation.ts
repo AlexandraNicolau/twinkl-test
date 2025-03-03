@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import YupPassword from 'yup-password';
-import { UserType } from '../user/user';
+import { UserType } from '../types/user';
 YupPassword(yup);
 
 export const userValidationSchema = yup.object().shape({

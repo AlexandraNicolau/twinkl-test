@@ -1,4 +1,4 @@
-import { BaseUser, UserType } from '../user/user';
+import { BaseUser, UserType } from '../types/user';
 import { addUser, findUserById } from './user.service';
 
 describe('findUserById', () => {
