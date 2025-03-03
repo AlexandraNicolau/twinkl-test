@@ -11,6 +11,8 @@ export type User = BaseUser & {
   id: string;
 };
 
+export type UserWithoutPassword = Omit<User, 'password'>;
+
 export enum UserType {
   student = 'student',
   privateTutor = 'privateTutor',

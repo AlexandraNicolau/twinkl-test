@@ -8,7 +8,7 @@ describe('findUserById', () => {
     );
   });
 
-  it('should return a single user by id', async () => {
+  it('should return a single user by id omitting the password', async () => {
     const mockUser = {
       firstName: 'John',
       lastName: 'Williams',
@@ -20,7 +20,9 @@ describe('findUserById', () => {
 
     const newUser = await addUser(mockUser);
     const user = await findUserById(newUser.id);
-    expect(user).toStrictEqual(newUser);
+    const { password, ...mockUserWithoutPassword } = newUser;
+
+    expect(user).toStrictEqual(mockUserWithoutPassword);
   });
 });
 
